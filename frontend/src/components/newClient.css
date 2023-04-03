@@ -1,0 +1,34 @@
+#buttons{
+    margin-top:100px;
+    text-align: center;
+}
+#save{
+    width: 100px;
+    margin-right: 12px;
+}
+#cancel{
+    width: 100px;
+}
+.row {
+    display: flex;
+}
+  
+.column {
+    flex: 50%;
+    float: left;
+    width: 50%;
+    padding: 30px;
+}
+.form-headings{
+    font-weight: bold;
+    margin-top: 10px;
+}
+#password{
+    margin-bottom: 50px;
+}
+#gender1{
+    margin-right: 15px;
+}
+#gender-input-1, #gender-input-2{
+    margin-right: 5px;
+}
