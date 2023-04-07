@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Integer> {
     @Query("SELECT COUNT(*) FROM Client")
@@ -36,4 +38,6 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 
     public Client getClientById(int id);
     public Client getClientByUserId(int id);
+
+    public Optional<Client> findClientByCNP(String cnp);
 }

@@ -24,7 +24,7 @@ public class Client {
     private String phoneNumber;
 
     @Column(name = "date_of_birth", nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.YYYY")
+    @DateTimeFormat
     private LocalDate dob;
 
     @Column(nullable = false)

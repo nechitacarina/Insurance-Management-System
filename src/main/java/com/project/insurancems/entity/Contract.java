@@ -18,11 +18,11 @@ public class Contract {
     private int id;
 
     @Column(name = "effective_date", nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.YYYY")
+    @DateTimeFormat
     private LocalDate effectiveDate;
 
     @Column(name = "expiration_date", nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.YYYY")
+    @DateTimeFormat
     private LocalDate expirationDate;
 
     @Column(nullable = false)

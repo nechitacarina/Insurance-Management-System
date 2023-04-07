@@ -39,7 +39,6 @@ function NewClient() {
       client,
     };
     const clientRequest = { client, user, contract, selectedPolicy };
-    console.log(clientRequest);
     return axios
       .post("http://localhost:8090/api/clients", clientRequest, {
         headers: authHeader(),

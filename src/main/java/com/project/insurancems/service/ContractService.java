@@ -12,6 +12,7 @@ import com.project.insurancems.security.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,13 +40,19 @@ public class ContractService {
         return contractRepository.findContractsByClient_Id(id);
     }
 
-    public Contract createContract(CreateContractRequest contractRequest){
+    public Contract createContract(CreateContractRequest contractRequest) throws Exception{
+        LocalDate expirationDate = contractRequest.getExpirationDate();
+        LocalDate effectiveDate = contractRequest.getEffectiveDate();
         Contract contract = new Contract();
         int idPolicy = contractRequest.getIdPolicy();
         Optional<Policy> policy = policyRepository.findById(idPolicy);
         contract.setPolicy(policy.get());
-        contract.setEffectiveDate(contractRequest.getEffectiveDate());
-        contract.setExpirationDate(contractRequest.getExpirationDate());
+        if(effectiveDate.isBefore(expirationDate) && expirationDate.isAfter(effectiveDate)){
+            contract.setEffectiveDate(effectiveDate);
+            contract.setExpirationDate(expirationDate);
+        }else {
+            throw new Exception("Invalid dates!");
+        }
         contract.setStatus(ContractStatus.ACTIVE);
         contract.setPrice(contractRequest.getPrice());
         contract.setMaxClaimAmount(contractRequest.getMaxClaimAmount());
@@ -55,11 +62,17 @@ public class ContractService {
         return contractRepository.save(contract);
     }
 
-    public Contract updateContractAvability(int id, Contract contract){
+    public void updateContractAvability(int id, Contract contract) throws Exception{
+        LocalDate expirationDate = contract.getExpirationDate();
+        LocalDate effectiveDate = contract.getEffectiveDate();
         Contract updateContract = contractRepository.getContractById(id);
-        updateContract.setEffectiveDate(contract.getEffectiveDate());
-        updateContract.setExpirationDate(contract.getExpirationDate());
-        return contractRepository.save(updateContract);
+        if(effectiveDate.isBefore(expirationDate) && expirationDate.isAfter(effectiveDate)){
+            updateContract.setEffectiveDate(effectiveDate);
+            updateContract.setExpirationDate(expirationDate);
+        }else {
+            throw new Exception("Invalid dates!");
+        }
+        contractRepository.save(updateContract);
     }
 
     public Contract getContractById(int id){

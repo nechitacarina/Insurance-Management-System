@@ -53,8 +53,12 @@ public class ClientController {
 
     @PutMapping("/info/{id}")
     @PreAuthorize("hasRole('AGENT')")
-    public Client editClientInfo(@PathVariable int id, @RequestBody Client client){
-        return clientService.editClientInfo(id, client);
+    public void editClientInfo(@PathVariable int id, @RequestBody Client client){
+        try {
+            clientService.editClientInfo(id, client);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @PutMapping("/password/{id}")
@@ -72,6 +76,10 @@ public class ClientController {
     @PostMapping
     @PreAuthorize("hasRole('AGENT')")
     public void createClient(@RequestBody CreateClientRequest clientRequest){
-        clientService.createClient(clientRequest);
+        try {
+            clientService.createClient(clientRequest);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }

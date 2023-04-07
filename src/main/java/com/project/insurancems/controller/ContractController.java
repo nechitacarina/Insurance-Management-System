@@ -40,13 +40,21 @@ public class ContractController {
     @PostMapping
     @PreAuthorize("hasRole('AGENT')")
     public void createContract(@RequestBody CreateContractRequest contract){
-        contractService.createContract(contract);
+        try {
+            contractService.createContract(contract);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('AGENT')")
     public void extendContractValability(@PathVariable("id") int id, @RequestBody Contract contract){
-        contractService.updateContractAvability(id, contract);
+        try {
+            contractService.updateContractAvability(id, contract);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @GetMapping("/{id}")

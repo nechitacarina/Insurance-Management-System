@@ -51,7 +51,7 @@ function EditClientPersonalInfo() {
         <label className="form-label">CNP:</label>
         <input
           type="text"
-          placeholder="Enter clients CNP"
+          placeholder="Enter client's CNP"
           name="cnp"
           className="form-control"
           defaultValue={cnp}
@@ -60,7 +60,7 @@ function EditClientPersonalInfo() {
         <label className="form-label">First name:</label>
         <input
           type="text"
-          placeholder="Enter clients first name"
+          placeholder="Enter client's first name"
           name="firstName"
           className="form-control"
           defaultValue={firstName}
@@ -69,7 +69,7 @@ function EditClientPersonalInfo() {
         <label className="form-label">Last name:</label>
         <input
           type="text"
-          placeholder="Enter clients last name"
+          placeholder="Enter client's last name"
           name="lastName"
           className="form-control"
           defaultValue={lastName}
@@ -78,7 +78,7 @@ function EditClientPersonalInfo() {
         <label className="form-label">Date of birth:</label>
         <input
           type="date"
-          placeholder="Enter clients date of birth"
+          placeholder="Enter client's date of birth"
           name="dob"
           className="form-control"
           defaultValue={dob}
@@ -108,7 +108,7 @@ function EditClientPersonalInfo() {
         <label className="form-label">Income:</label>
         <input
           type="number"
-          placeholder="Enter clients income"
+          placeholder="Enter client's income"
           name="income"
           className="form-control"
           defaultValue={income}
@@ -117,7 +117,7 @@ function EditClientPersonalInfo() {
         <label className="form-label">Phone number:</label>
         <input
           type="number"
-          placeholder="Enter clients phone number"
+          placeholder="Enter client's phone number"
           name="phoneNumber"
           className="form-control"
           defaultValue={phoneNumber}
@@ -128,7 +128,7 @@ function EditClientPersonalInfo() {
         <label className="form-label">Email:</label>
         <input
           type="email"
-          placeholder="Enter clients email"
+          placeholder="Enter client's email"
           name="email"
           className="form-control"
           defaultValue={email}
